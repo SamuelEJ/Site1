@@ -1,0 +1,15 @@
+ {% extends "Base.html" %}
+
+ {% block BodyDiv %}
+
+
+    <h2>{{ Post.Title }}</h2>
+    <p>{{ Post.Opening_Para }}</P>
+    <p><img src = "{{ Post.Image.url }}" width = "400px"></P>
+    <p>Year: {{Post.year}} Month: {{Post.month}}</p>
+
+
+
+
+
+ {% endblock %}

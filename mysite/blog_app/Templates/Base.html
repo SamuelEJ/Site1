@@ -1,0 +1,312 @@
+<!Doctype html>
+<html>
+<head>
+
+
+
+{% load Archive_items %}
+
+<style>
+
+header {
+
+background-image:url("/media/NHautumn_01.jpg");
+margin:0 auto;
+width:100%;
+height:135px;
+border:3px outset gainsboro;
+font:Book Antiqua;
+color:white;
+text-shadow:2px 2px black;
+position:relative;
+}
+
+
+body {
+
+background-color:grey;
+margin:0px;
+padding:0px;
+margin:0 auto;
+}
+
+
+
+#TopHolder {
+
+
+overflow:hidden;
+margin:0 auto;
+height:auto;
+max-width:890px;
+min-width:300px;
+font: 18px arial, sans-serif;
+max-width:870px;
+border:2px outset grey;
+border-radius:5px;
+
+}
+
+#BlogBodyHolder {
+
+margin:0 auto;
+overflow:hidden;
+height:auto;
+float:left;
+width:99.9%;
+position:relative;
+display: table;
+background-color:white;
+}
+
+
+#BlogBody {
+
+margin:5px;
+overflow:hidden;
+float:left;
+height:auto;
+width:79%;
+padding:10px;
+background-color:white;
+
+
+}
+
+
+#rightPane {
+
+float:left;
+border-radius:5px;
+height:100%;
+width:17%;
+font-size:13px;
+background-color:ALiceBlue;
+
+}
+
+
+#rightPane ul {
+padding:5px;
+margin:0;
+}
+
+#rightPane ul li {
+list-style:none;
+}
+
+#mainSearch {
+
+float:right;
+position: absolute;
+bottom: 0;
+right:0;
+
+}
+
+header a {
+
+text-decoration:none;
+color:white;
+}
+
+ul li a {
+
+list-style:none;
+
+}
+
+header h1 {
+margin:3px;
+}
+
+
+/* ---------------  POST DETAIL   -------------- */
+
+
+.IndividualPostArea {
+
+text-align:justify;
+width:100%;
+height:auto;
+margin-bottom:15px;
+border-bottom:1px dashed Gainsboro;
+
+}
+
+.pagination {
+
+text-align:center;
+height:30px;
+
+}
+
+
+#spanTags {
+
+font-size:12px;
+color:grey;
+
+}
+
+#spanTags a {
+
+text-decoration:none;
+
+}
+
+
+h3 {
+
+text-decoration:none;
+}
+
+h2 a {
+
+color:DarkSlateGrey;
+text-decoration:none;
+
+}
+
+h2 {
+
+padding:0px;
+margin:0px;
+
+}
+
+
+
+#footer {
+border-radius:3px;
+border:1px outset black;
+margin:0 auto;
+height:55px;
+width:870px;
+background-color:black;
+color:white;
+}
+
+
+
+.social-media-holder {
+
+width:100%;
+height:23px;
+margin-top:10px;
+
+}
+
+.fb-share-button {
+
+float:left;
+margin-right:4px;
+}
+
+.twitter-share-button {
+
+float:left;
+margin-right:4px;
+}
+
+
+.dateLine {
+
+color:grey;
+margin:0px;
+font-size:11px
+
+}
+
+</style>
+
+
+
+
+<title>Blog Home</title>
+</head>
+
+<body>
+<div id="fb-root"></div>
+<script>
+
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+
+
+</script>
+
+
+
+
+<div id = "TopHolder"> 
+
+
+<header>
+    <h1><a href = "{% url 'blogHome' %}">The Blog Title</a></h1>
+
+   <form id = "mainSearch" action="{% url 'blogSearchListQueryString' %}" method="get">
+       <input type="text" name="q">
+       <input type="submit" value="Search">
+   </form>
+
+</header>
+
+
+<div id = "BlogBodyHolder">
+
+  <!--- {% Archives %} ---->
+
+
+
+<div id = "BlogBody">
+     {% block BodyDiv %}
+
+     {% endblock %}
+</div>
+
+<div id = 'rightPane'>
+<h3>Archive</h3>
+    {% ArchiveView %}
+
+</div>
+
+</div>
+
+</div>
+
+<div id = "footer">
+     {% block footerDiv %}
+
+     {% endblock %}
+
+
+</div>
+
+
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+ {% extends "Base.html" %}
+
+ {% block BodyDiv %}
+
+ <div class = "IndividualPostArea">
+
+ <!--- <p>You searched for: <strong>{{ query }}</strong></p> --->
+
+        {% if posts %}
+            <p>Found {{ posts|length }} Posts </p>
+
+
+  </div>
+
+        {% for post in posts %}
+
+        <div class = "IndividualPostArea">
+            <h2><a href="/blog/{{post.id}}">{{ post.Title }}</a></h2>
+            <span><p class = "dateLine">{{post.createdDate}}</p></span>
+            <p>{{ post.Opening_Para }}</p>
+
+
+            <div id = "spanTags">
+            <a>Tags:</a>
+           {% for a in post.Tags.all %}
+            <a href = "{% url 'blogSearchList' text_name=a.Tag_text %}">{{ a.Tag_text }}</a>
+            {% endfor %}
+            <br>
+            </div>
+
+       </div>
+
+        {% endfor %}
+         <br>
+
+        {% else %}
+            <p>No Posts matched your search criteria.</p>
+        {% endif %}
+
+
+
+
+
+ {% endblock %}
+

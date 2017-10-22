@@ -1,0 +1,13 @@
+<!Doctype html>
+<html>
+<head>
+  <title>Blog Home</title>
+</head>
+
+<body>
+   <h1>Blog detail</h1>
+    {% for Post in PostsList%}
+      <li><a href=".">{{ Post.Title }}</a></li>
+    {%endfor%}
+</body>
+</html>

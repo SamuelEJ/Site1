@@ -1,0 +1,8 @@
+
+<ul>
+    {% for period in archives %}
+       <li><a href = "{% url 'blogSearchListDates' yearParameter=period.year monthParameter=period.monthNumber %}">{{ period.archive_period }}  ({{period.post_count}})</a></li>
+    {% endfor %}
+</ul>
+
+
